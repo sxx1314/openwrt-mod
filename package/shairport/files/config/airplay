@@ -1,0 +1,9 @@
+config airplay
+	option bname 'Living Room'
+	option initbuf 320
+	option daemonize true
+#	option port 5002
+#	option password '123456'
+	option pcm 'default'
+	option ctl 'default'
+	option volume 'Speaker'
