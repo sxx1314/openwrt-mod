@@ -1,35 +1,65 @@
-This is the buildsystem for the OpenWrt Linux distribution.
-
-Please use "make menuconfig" to configure your appreciated
-configuration for the toolchain and firmware.
-
-You need to have installed gcc, binutils, bzip2, flex, python, perl
-make, find, grep, diff, unzip, gawk, getopt, libz-dev and libc headers.
-
-Run "./scripts/feeds update -a" to get all the latest package definitions
-defined in feeds.conf / feeds.conf.default respectively
-and "./scripts/feeds install -a" to install symlinks of all of them into
-package/feeds/.
-
-Use "make menuconfig" to configure your image.
-
-Simply running "make" will build your firmware.
-It will download all sources, build the cross-compile toolchain, 
-the kernel and all choosen applications.
-
-You can use "scripts/flashing/flash.sh" for remotely updating your embedded
-system via tftp.
-
-The OpenWrt system is documented in docs/. You will need a LaTeX distribution
-and the tex4ht package to build the documentation. Type "make -C docs/" to build it.
-
-To build your own firmware you need to have access to a Linux, BSD or MacOSX system
-(case-sensitive filesystem required). Cygwin will not be supported because of
-the lack of case sensitiveness in the file system.
+说明此项目基于linux gpl开原条例  所有源码开源
+希望广大童鞋可以参与进来
+另外由于费用问题暂时博客挂载免费空间提供商不要嫌弃
+www.sxx1314.tk
+喜欢的话赞助一些让我买个收费空间吧  哈哈
 
 
-Sunshine!
-	Your OpenWrt Project
-	http://openwrt.org
+2014/08/15
+7620增加集成版固件 包含airplay ddns samba aria2（暂时无web界面后续增加） 
+后继集成迅雷下载 aria2web界面 摄像头挂载web界面 ftp服务器 openvpn
+
+2014/08/14
+源码对外开放 开放版本r42150   
+git源码地址  git://code.csdn.net/Sxx1314_qinyuhan/broadlink_openwrt.git
+                     git@github.com:sxx1314/broadlink_openwrt.git
+openwrt trunk版 更新到 r42162
+  
+
+2014/08/13 
+20140813
+openwrt  r42150
+1.修复 mt7620a 不能编译出8m以上固件bug  原生固件识别增加到32m
+2.修复 断电掉配置bug 
+
+9331 进度
+官方uboot源码增加ddr2 40m晶振支持  启动报错排错中  争取14号搞定uboot  15号完成移植工作
+
+nfc进度  
+初步调试
+
+2014/08/12 trunk    r42150  更新
+增加broadlink 7620a 支持  主题增加修改freifunk-bno为dreambox默认主题适合小白
+修复bug  增加联想y1s支持
+更新纯净固件   20140812broadlink.bin
+
+2014/07/30 trunk    r41888
+修改默认美化界面 加入broadlink主题默认不显示在系统设置里更换#网页设计水平不高
+同步官方网站更新  见下列更新列表
+https://dev.openwrt.org/log/branches/attitude_adjustment?action=stop_on_copy&mode=stop_on_copy&rev=41888&stop_rev=&limit=100&mail_addr=&mail_addr_confirm=
+
+2014/07/26 trunk     r41825  
+
+创建patch  以支持公司mt7620a开发板（原生不支持）默认打好patch，如果有需求自行git 或者svn 官方源之后自行参考patch修改文件
+加入airplay（已添加）   石像鬼qos（未添加 在3.10.+内核上可以使用但是有时候不稳定建议用官方QOS）
+建议修改uboot  mtd分区 提供一个lintel的uboot，支持无ttl时更新固件 系统启动不了时可以设置ip为192.168.1.100 然后登陆192.168.1.1 有个web控制台可以更新
+其他特性见openwrt官方wiki    www.openwrt.org
+
+dev:    size   erasesize  name
+mtd0: 00020000 00010000 "u-boot"
+mtd1: 00010000 00010000 "u-boot-env"
+mtd2: 00010000 00010000 "factory"
+mtd3: 00fc0000 00010000 "firmware"
+mtd4: 00ebd015 00010000 "rootfs"
+mtd5: 00ca0000 00010000 "rootfs_data"
+
+
+
+
+
+
+
+
+
 
 
